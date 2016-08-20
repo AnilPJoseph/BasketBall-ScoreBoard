@@ -1,2 +1,2 @@
 # BasketBall-ScoreBoard
-It is version of Basketball Scoreboard with the necessary features for displaying a Live run-time Scoreboard.
+It is version of Basketball Scoreboard with the necessary features for displaying a Live run-time Scoreboard. It is enabled with mouse click options. Left click will increment the score and right click will decrement the score. The team foul will be reseted when the quarter is changed. You can increment the running quarter by left clicking the running quarter. You can set the tournament name and the team names.

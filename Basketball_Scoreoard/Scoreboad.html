@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scoreboad</title><script src="min.js"></script>
+<script>
+function foulA()
+{
+	if((Number(document.getElementById('foulA').innerHTML))<=4)
+	{
+		document.getElementById('foulA').innerHTML=Number(document.getElementById('foulA').innerHTML)+1;
+		document.getElementById('foulA').style.color = "green";
+	}
+	if((Number(document.getElementById('foulA').innerHTML))==5)
+	{
+		document.getElementById('foulA').style.color = "red";
+	}
+}
+function foulB()
+{
+	if((Number(document.getElementById('foulB').innerHTML))<=4)
+	{
+		document.getElementById('foulB').innerHTML=Number(document.getElementById('foulB').innerHTML)+1;
+		document.getElementById('foulB').style.color = "green";
+	}
+	if((Number(document.getElementById('foulB').innerHTML))==5)
+	{
+		document.getElementById('foulB').style.color = "red";
+	}
+}
+function foulA1()
+{
+if((Number(document.getElementById('foulA').innerHTML))>0)
+	{
+	if((Number(document.getElementById('foulA').innerHTML))<=5)
+	{
+		document.getElementById('foulA').innerHTML=Number(document.getElementById('foulA').innerHTML)-1;
+		document.getElementById('foulA').style.color = "green";
+	}
+	if((Number(document.getElementById('foulA').innerHTML))==5)
+	{
+		document.getElementById('foulA').style.color = "red";
+	}
+}}
+function foulB1()
+{
+if((Number(document.getElementById('foulB').innerHTML))>0)
+	{
+	if((Number(document.getElementById('foulB').innerHTML))<=5)
+	{
+		document.getElementById('foulB').innerHTML=Number(document.getElementById('foulB').innerHTML)-1;
+		document.getElementById('foulB').style.color = "green";
+	}
+	if((Number(document.getElementById('foulB').innerHTML))==5)
+	{
+		document.getElementById('foulB').style.color = "red";
+	}
+}
+}
+function scoreA()
+{
+	document.getElementById('scoreA').innerHTML=Number(document.getElementById('scoreA').innerHTML)+1;
+}
+function scoreB()
+{
+	document.getElementById('scoreB').innerHTML=Number(document.getElementById('scoreB').innerHTML)+1;
+}
+function scoreA1()
+{
+if((Number(document.getElementById('scoreA').innerHTML))>0)
+	{
+	
+	document.getElementById('scoreA').innerHTML=Number(document.getElementById('scoreA').innerHTML)-1;
+}
+}
+function scoreB1()
+{
+if((Number(document.getElementById('scoreB').innerHTML))>0)
+	{
+	document.getElementById('scoreB').innerHTML=Number(document.getElementById('scoreB').innerHTML)-1;
+}
+}
+function nextquarter() {
+	if((Number(document.getElementById('running_quarter').innerHTML))<4)
+	{
+	if (confirm("Confirm Next Quarter!") == true) {
+       document.getElementById('running_quarter').innerHTML=Number(document.getElementById('running_quarter').innerHTML)+1;
+       document.getElementById('foulB').innerHTML=0;
+       document.getElementById('foulB').style.color = "green";
+       document.getElementById('foulA').innerHTML=0;
+       document.getElementById('foulA').style.color = "green";
+       }
+    }
+}
+function previousquarter() {
+	if((Number(document.getElementById('running_quarter').innerHTML))>1)
+	{
+	if (confirm("Confirm Previous Quarter!") == true) {
+       document.getElementById('running_quarter').innerHTML=Number(document.getElementById('running_quarter').innerHTML)-1;
+       document.getElementById('foulB').innerHTML=0;
+       document.getElementById('foulB').style.color = "green";
+       document.getElementById('foulA').innerHTML=0;
+       document.getElementById('foulA').style.color = "green";
+       }
+    }
+}
+</script>
+<style>
+body
+{
+	margin:0px;
+	background-color: #D3D3D3;
+}
+.header
+{
+	background-color: #0000FF;
+	height :60px;
+	width: 100%;
+	font-size : 125%;
+}
+.heading
+{
+	text-align: center;
+	vertical-align: text-center;
+	color: #FFFFFF;
+	width: 100%;
+	font-size:50px;
+	background-color: #0000FF;
+}
+.team
+{
+	font-size:50px;
+	color:red;
+	text-align: center;
+	font-weight: bold;
+	background-color: #D3D3D3;
+}
+@font-face { font-family: 'Myfont'; src: url('Fonts/LCD.TTF'); }
+</style>
+</head>
+<body>
+<header>
+<div class="header">
+<div class="header"><b><input type="text" class="heading" align="center" size="16"></b></div>
+</div>
+		</header>	
+		<table border="1" width="100%">
+		<tr><b>
+		<td width="50%" align="center"><b>
+
+		<input type="text" align="center" class="team" size="20" id="teamA">
+		</td></b>
+		<td width="50%" align="center"><b>
+		<input type="text" align="center" class="team" size="20" id="teamB">
+		</td></b>
+		</tr>
+		<tr>
+		<td width="50%" align="center" style="font-family:'Myfont';font-size:400px;color:blue;" id="scoreA" onclick="scoreA();" oncontextmenu="event.preventDefault();scoreA1();">0</td>
+		<td width="50%" align="center" style="font-family:'Myfont';font-size:400px;color:blue;" id="scoreB" onclick="scoreB();" oncontextmenu="event.preventDefault();scoreB1();">0</td>
+		</tr>
+		</table>
+		<table border="0" width="100%">
+		<tr>
+		<td width="20%" align="center" style="font-family:'Myfont';font-size:175px;color:green;" id="foulA" onclick="foulA();" oncontextmenu="event.preventDefault();foulA1();">0</td>
+		<td width="60%" align="center" style="font-family:'Myfont';font-size:175px;color:rose;" id="running_quarter" onclick="nextquarter();" oncontextmenu="event.preventDefault();previousquarter();">1</td>
+		<td width="20%" align="center" style="font-family:'Myfont';font-size:175px;color:green;" id="foulB" onclick="foulB();" oncontextmenu="event.preventDefault();foulB1();">0</td>
+		</tr>
+		</table>
+	</body>
+</html>

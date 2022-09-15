@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Scoreboad</title><script src="min.js"></script>
+		<link rel="stylesheet" href="bootstrap.min.css">
+  		<script src="jquery.min.js"></script>
+  		<script src="bootstrap.min.js"></script>
+		<title>Scoreboad</title>
 		<script>
 			function foulA()
 			{
@@ -130,13 +133,25 @@
 			font-size:50px;
 			background-color: #0000FF;
 			}
-			.team
+			.teamA
 			{
-			font-size:50px;
+			font-size:100px;
 			color:red;
 			text-align: center;
 			font-weight: bold;
 			background-color: #D3D3D3;
+			border:none;
+			text-transform: uppercase;
+			}
+			.teamB
+			{
+			font-size:100px;
+			color:red;
+			text-align: center;
+			font-weight: bold;
+			background-color: #D3D3D3;
+			border:none;
+			text-transform: uppercase;
 			}
 			@font-face { font-family: 'Myfont'; src: url('Fonts/LCD.TTF'); }
 		</style>
@@ -144,18 +159,13 @@
 	<body>
 		<header>
 			<div class="header">
-				<div class="header"><b><input type="text" class="heading" align="center" size="16"></b></div>
+				<div class="header"><b><div class="heading" align="center" size="16">Rajagiri Basket Ball Tournament 2022</div></b></div>
 			</div>
-		</header>	
+		</header>
 		<table border="1" width="100%">
 		<tr><b>
-		<td width="50%" align="center"><b>
-		
-		<input type="text" align="center" class="team" size="20" id="teamA">
-		</td></b>
-		<td width="50%" align="center"><b>
-		<input type="text" align="center" class="team" size="20" id="teamB">
-		</td></b>
+		<td width="50%" align="center" class="teamA" oncontextmenu="event.preventDefault();teamColorA();"><b id="nameTeamA">Team A</td></b>
+		<td width="50%" align="center" class="teamB" oncontextmenu="event.preventDefault();teamColorB();"><b id="nameTeamB">Team B</td></b>
 		</tr>
 		<tr>
 		<td width="50%" align="center" style="font-family:'Myfont';font-size:400px;color:blue;" id="scoreA" onclick="scoreA();" oncontextmenu="event.preventDefault();scoreA1();">0</td>
@@ -169,6 +179,87 @@
 		<td width="20%" align="center" style="font-family:'Myfont';font-size:175px;color:green;" id="foulB" onclick="foulB();" oncontextmenu="event.preventDefault();foulB1();">0</td>
 		</tr>
 		</table>
+
+		<!-- Modal -->
+<div class="modal fade" id="colorTeamA" tabindex="-1" role="dialog">
+	<div class="modal-dialog" >
+	  <div class="modal-content">
+		<div class="modal-header">
+			<label for="browser" class="form-label">Team A Details</label>
+		</div>
+		<div class="modal-body">
+			<label class="form-label" for="teamA-name">Team Name</label>
+			<input type="text" class="form-control" id="teamA-name" placeholder="Enter Team Name">
+			<label for="text-color-teamA" class="form-label">Text color:</label>
+			<input type="color" id="text-color-teamA" class="form-control">
+			 <label for="bg-color-teamA" class="form-label" >Background color:</label>
+			<input type="color" id="bg-color-teamA" class="form-control">
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-primary" onclick="teamColorASave();">Save </button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+		<!-- Modal -->
+<div class="modal fade" id="colorTeamB" tabindex="-1" role="dialog">
+	<div class="modal-dialog" >
+	  <div class="modal-content">
+		<div class="modal-header">
+			<label for="browser" class="form-label">Team B Details</label>
+		</div>
+		<div class="modal-body">
+			<label class="form-label" for="teamB-name">Team Name</label>
+			<input type="text" class="form-control" id="teamB-name" placeholder="Enter Team Name">
+			<label for="text-color-teamB" class="form-label">Text color:</label>
+			<input type="color" id="text-color-teamB" class="form-control">
+			 <label for="bg-color-teamB" class="form-label" >Background color:</label>
+			<input type="color" id="bg-color-teamB" class="form-control">
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-primary" onclick="teamColorBSave();">Save </button>
+		</div>
+	  </div>
+	</div>
+  </div>
 		</body>
+		<script>
+			function teamColorA(){
+				$('#teamA-name').val($('#nameTeamA').html());
+				$('#text-color-teamA').val(rgb2hex($('.teamA').css("color")));
+				$('#bg-color-teamA').val(rgb2hex($('.teamA').css("background-color")));
+				$('#colorTeamA').modal('show');
+			}
+			function teamColorASave(){
+				$('#nameTeamA').html($('#teamA-name').val());
+				$('.teamA').css("color", $('#text-color-teamA').val());
+				$('.teamA').css("background-color", $('#bg-color-teamA').val());
+				$('#colorTeamA').modal('hide');
+			}
+			function teamColorB(){
+				$('#teamB-name').val($('#nameTeamB').html());
+				$('#text-color-teamB').val(rgb2hex($('.teamB').css("color")));
+				$('#bg-color-teamB').val(rgb2hex($('.teamB').css("background-color")));
+				$('#colorTeamB').modal('show');
+			}
+			function teamColorBSave(){
+				$('#nameTeamB').html($('#teamB-name').val());
+				$('.teamB').css("color", $('#text-color-teamB').val());
+				$('.teamB').css("background-color", $('#bg-color-teamB').val());
+				$('#colorTeamB').modal('hide');
+			}
+			var hexDigits = new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"); 
+			function rgb2hex(rgb) {
+			 rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+			 return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+			}
+
+			function hex(x) {
+			  return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+			 }
+		</script>
 		</html>
 				

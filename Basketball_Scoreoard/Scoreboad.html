@@ -8,25 +8,37 @@
 		<script>
 			function foulA()
 			{
-				if((Number(document.getElementById('foulA').innerHTML))<=4)
+				if((Number(document.getElementById('foulA').innerHTML))<6)
 				{
 					document.getElementById('foulA').innerHTML=Number(document.getElementById('foulA').innerHTML)+1;
 					document.getElementById('foulA').style.color = "green";
 				}
-				if((Number(document.getElementById('foulA').innerHTML))==5)
+				else if((Number(document.getElementById('foulA').innerHTML))>=6 && (Number(document.getElementById('foulA').innerHTML))<9)
 				{
+					document.getElementById('foulA').innerHTML=Number(document.getElementById('foulA').innerHTML)+1;
+					document.getElementById('foulA').style.color = "orange";
+				}
+				else if((Number(document.getElementById('foulA').innerHTML))==9)
+				{
+					document.getElementById('foulA').innerHTML=Number(document.getElementById('foulA').innerHTML)+1;
 					document.getElementById('foulA').style.color = "red";
 				}
 			}
 			function foulB()
 			{
-				if((Number(document.getElementById('foulB').innerHTML))<=4)
+				if((Number(document.getElementById('foulB').innerHTML))<6)
 				{
 					document.getElementById('foulB').innerHTML=Number(document.getElementById('foulB').innerHTML)+1;
 					document.getElementById('foulB').style.color = "green";
 				}
-				if((Number(document.getElementById('foulB').innerHTML))==5)
+				else if((Number(document.getElementById('foulB').innerHTML))>=6 && (Number(document.getElementById('foulB').innerHTML))<9)
 				{
+					document.getElementById('foulB').innerHTML=Number(document.getElementById('foulB').innerHTML)+1;
+					document.getElementById('foulB').style.color = "orange";
+				}
+				else if((Number(document.getElementById('foulB').innerHTML))==9)
+				{
+					document.getElementById('foulB').innerHTML=Number(document.getElementById('foulB').innerHTML)+1;
 					document.getElementById('foulB').style.color = "red";
 				}
 			}
@@ -34,78 +46,81 @@
 			{
 				if((Number(document.getElementById('foulA').innerHTML))>0)
 				{
-					if((Number(document.getElementById('foulA').innerHTML))<=5)
+					if((Number(document.getElementById('foulA').innerHTML))<=7)
 					{
 						document.getElementById('foulA').innerHTML=Number(document.getElementById('foulA').innerHTML)-1;
 						document.getElementById('foulA').style.color = "green";
 					}
-					if((Number(document.getElementById('foulA').innerHTML))==5)
+					else if((Number(document.getElementById('foulA').innerHTML))>7 && (Number(document.getElementById('foulA').innerHTML))<=10)
 					{
-						document.getElementById('foulA').style.color = "red";
+						document.getElementById('foulA').innerHTML=Number(document.getElementById('foulA').innerHTML)-1;
+						document.getElementById('foulA').style.color = "orange";
 					}
-				}}
-				function foulB1()
+				}
+			}
+			function foulB1()
+			{
+				if((Number(document.getElementById('foulB').innerHTML))>0)
 				{
-					if((Number(document.getElementById('foulB').innerHTML))>0)
+					if((Number(document.getElementById('foulB').innerHTML))<=7)
 					{
-						if((Number(document.getElementById('foulB').innerHTML))<=5)
-						{
-							document.getElementById('foulB').innerHTML=Number(document.getElementById('foulB').innerHTML)-1;
-							document.getElementById('foulB').style.color = "green";
-						}
-						if((Number(document.getElementById('foulB').innerHTML))==5)
-						{
-							document.getElementById('foulB').style.color = "red";
-						}
+						document.getElementById('foulB').innerHTML=Number(document.getElementById('foulB').innerHTML)-1;
+						document.getElementById('foulB').style.color = "green";
+					}
+					else if((Number(document.getElementById('foulB').innerHTML))>7 && (Number(document.getElementById('foulB').innerHTML))<=10)
+					{
+						document.getElementById('foulB').innerHTML=Number(document.getElementById('foulB').innerHTML)-1;
+						document.getElementById('foulB').style.color = "orange";
 					}
 				}
-				function scoreA()
+			}
+			function scoreA()
+			{
+				document.getElementById('scoreA').innerHTML=Number(document.getElementById('scoreA').innerHTML)+1;
+			}
+			function scoreB()
+			{
+				document.getElementById('scoreB').innerHTML=Number(document.getElementById('scoreB').innerHTML)+1;
+			}
+			function scoreA1()
+			{
+				if((Number(document.getElementById('scoreA').innerHTML))>0)
 				{
-					document.getElementById('scoreA').innerHTML=Number(document.getElementById('scoreA').innerHTML)+1;
+					
+					document.getElementById('scoreA').innerHTML=Number(document.getElementById('scoreA').innerHTML)-1;
 				}
-				function scoreB()
+			}
+			function scoreB1()
+			{
+				if((Number(document.getElementById('scoreB').innerHTML))>0)
 				{
-					document.getElementById('scoreB').innerHTML=Number(document.getElementById('scoreB').innerHTML)+1;
+					document.getElementById('scoreB').innerHTML=Number(document.getElementById('scoreB').innerHTML)-1;
 				}
-				function scoreA1()
+			}
+			function nextquarter() {
+				if((Number(document.getElementById('running_quarter').innerHTML))<4)
 				{
-					if((Number(document.getElementById('scoreA').innerHTML))>0)
-					{
-						
-						document.getElementById('scoreA').innerHTML=Number(document.getElementById('scoreA').innerHTML)-1;
+					if (confirm("Confirm Next Quarter!") == true) {
+						document.getElementById('running_quarter').innerHTML=Number(document.getElementById('running_quarter').innerHTML)+1;
+						document.getElementById('foulB').innerHTML=0;
+						document.getElementById('foulB').style.color = "green";
+						document.getElementById('foulA').innerHTML=0;
+						document.getElementById('foulA').style.color = "green";
 					}
 				}
-				function scoreB1()
+			}
+			function previousquarter() {
+				if((Number(document.getElementById('running_quarter').innerHTML))>1)
 				{
-					if((Number(document.getElementById('scoreB').innerHTML))>0)
-					{
-						document.getElementById('scoreB').innerHTML=Number(document.getElementById('scoreB').innerHTML)-1;
+					if (confirm("Confirm Previous Quarter!") == true) {
+						document.getElementById('running_quarter').innerHTML=Number(document.getElementById('running_quarter').innerHTML)-1;
+						document.getElementById('foulB').innerHTML=0;
+						document.getElementById('foulB').style.color = "green";
+						document.getElementById('foulA').innerHTML=0;
+						document.getElementById('foulA').style.color = "green";
 					}
 				}
-				function nextquarter() {
-					if((Number(document.getElementById('running_quarter').innerHTML))<4)
-					{
-						if (confirm("Confirm Next Quarter!") == true) {
-							document.getElementById('running_quarter').innerHTML=Number(document.getElementById('running_quarter').innerHTML)+1;
-							document.getElementById('foulB').innerHTML=0;
-							document.getElementById('foulB').style.color = "green";
-							document.getElementById('foulA').innerHTML=0;
-							document.getElementById('foulA').style.color = "green";
-						}
-					}
-				}
-				function previousquarter() {
-					if((Number(document.getElementById('running_quarter').innerHTML))>1)
-					{
-						if (confirm("Confirm Previous Quarter!") == true) {
-							document.getElementById('running_quarter').innerHTML=Number(document.getElementById('running_quarter').innerHTML)-1;
-							document.getElementById('foulB').innerHTML=0;
-							document.getElementById('foulB').style.color = "green";
-							document.getElementById('foulA').innerHTML=0;
-							document.getElementById('foulA').style.color = "green";
-						}
-					}
-				}
+			}
 		</script>
 		<style>
 			body
@@ -159,7 +174,7 @@
 	<body>
 		<header>
 			<div class="header">
-				<div class="header"><b><div class="heading" align="center" size="16">Rajagiri Basket Ball Tournament 2022</div></b></div>
+				<div class="header"><b><div class="heading" align="center" size="16">IRINJALAKUDA 3X3 BASKETBALL TOURNAMENT 2023</div></b></div>
 			</div>
 		</header>
 		<table border="1" width="100%">
@@ -262,4 +277,3 @@
 			 }
 		</script>
 		</html>
-				
